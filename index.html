@@ -91,6 +91,16 @@
 							<li>ngx-</li>
 						</ul>
 					</section>
+
+					<section>
+						<h2>Dependencies</h2>
+						<p>dependencies vs. devDependencies vs. peerDependencies</p>
+						<ul>
+							<li><b>dependencies</b> - is for modules that will also be installed for anyone using your library such as @types/ modules that you don’t expect users would already have</li>
+							<li><b>peerDependencies</b> - is for modules that you expect users will already have (i.e. Angular) but you want warn them if they are missing </li>
+							<li><b>devDependencies</b> - is for modules that are just for you to use when developing your library</li>
+						</ul>
+					</section>
 				</section>
 
 				<!-- ***************************** Build Process **************************** -->
@@ -111,6 +121,31 @@
 					</section>
 
 					<section>
+						<p>I like rollup.js because of how easy it is to setup</p>
+					</section>
+
+					<section>
+						<h2>Example rollup.js config</h2>
+						<pre><code class="hljs" data-trim contenteditable>
+export default {
+  entry: 'index.js',
+  dest: 'bundles/my-lib.umd.js',
+  sourceMap: false,
+  format: 'umd',
+  moduleName: 'ng.myLib',
+  globals: {
+    '@angular/core': 'ng.core',
+    '@angular/common': 'ng.common',
+    'rxjs/Observable': 'Rx',
+    'rxjs/add/operator/map': 'Rx.Observable.prototype',
+    // Any other operators you need ...
+  }
+}
+						</code></pre>
+						<p class="fragment">How easy is that?</p>
+					</section>
+
+					<section>
 						NPM scripts
 					</section>
 				</section>
@@ -123,6 +158,11 @@
 
 					<section data-background="https://media.giphy.com/media/n8wc3YQsqhgli/giphy.gif">
 						<h2>This part can be nerve racking</h2>
+					</section>
+
+					<section>
+						<h2>It doesn't have to be though</h2>
+						<p class="fregment">This is when the community gets to start helping you make your library better</p>
 					</section>
 				</section>
 
@@ -163,8 +203,16 @@
 
 					<section>
 						<h2>Our Task</h2>
+					</section>
 
-						<p></p>
+					<section>
+						<p>Change this:</p>
+						<img src="/images/before-change.PNG" />
+					</section>
+
+					<section>
+						<p>Into this:</p>
+						<img src="/images/change-complete.PNG" />
 					</section>
 				</section>
 
