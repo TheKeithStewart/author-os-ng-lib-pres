@@ -110,22 +110,30 @@
 					</section>
 
 					<section>
-						<h2>Compiling TypeScript</h2>
+						<h2>Compiling TypeScript Q&A</h2>
+						<p class="fragment">Q: Is it ok to use <b>tsc</b> to compile my source code with?</p>
+						<p class="fragment">A: <span style="color: red">No!</span> Use <b>ngc</b> from @angular/compiler-cli instead.</p>
 					</section>
 
 					<section>
-						<h2>Bundling</h2>
-						Browserify, webpack, jspm, rollup.js
-						SystemJS?
-						I like rollup.js
+						<h2>Q: What is Module Bundling?</h2>
+						<p class="fragment">A: It is the process of taking your source code files and bringing them together into one or more bundle files that can be imported into your applications</p>
 					</section>
 
 					<section>
-						<p>I like rollup.js because of how easy it is to setup</p>
+						<h2>Bundling Your Library</h2>
+						<p>There are many bundling tools to choose from such as:</p>
+						<ul>
+							<li>Browserify</li>
+							<li>webpack</li>
+							<li>jspm</li>
+							<li>rollup.js</li>
+						</ul>
+						<p class="fragment">Personally, I like rollup.js for its simplicity</p>
 					</section>
 
 					<section>
-						<h2>Example rollup.js config</h2>
+						<h2>Example rollup.js configuration</h2>
 						<pre><code class="hljs" data-trim contenteditable>
 export default {
   entry: 'index.js',
@@ -146,7 +154,16 @@ export default {
 					</section>
 
 					<section>
-						NPM scripts
+						<h2>The whole build process</h2>
+						<pre><code class="hljs" data-trim contenteditable>
+  "scripts": {
+    "cleanup": "rimraf bundles",
+    "bundling": "rollup -c",
+    "minify": "uglifyjs bundles/angular2-esri4.umd.js --screw-ie8 --compress --mangle --comments --output bundles/angular2-esri4.umd.min.js",
+    "build": "npm run cleanup && ngc && npm run bundling && npm run minify",
+    "prepublish": "npm run build"
+  },
+						</code></pre>
 					</section>
 				</section>
 
