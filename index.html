@@ -20,6 +20,16 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
+		<style>
+			.blink_me {
+				animation: blinker 1s linear infinite;
+			}
+
+			@keyframes blinker {  
+				50% { opacity: 0; }
+			}
+		</style>
 	</head>
 	<body>
 
@@ -38,17 +48,20 @@
 				</section>
 
 				<section>
-					<h2>Based on a blog post</h2>
+					<h2>More information on this topic</h2>
+					<p>Read my blog post:</p>
+					<p><i>Authoring an Open Source Library for Angular</i></p>
 					<p>
-						<small>URL to come</small>
+						<small><a href="https://tinyurl.com/hf3w534">https://tinyurl.com/hf3w534</a></small>
 					</p>
+					<p style="color: red" class="blink_me">Hot off the presses!</p>
 				</section>
 
 				<section>
 					<h2>Agenda</h2>
 					<ul>
 						<li>Setting Up the Library</li>
-						<li>Build Process</li>
+						<li>The Build Process</li>
 						<li>Publishing to NPM</li>
 						<li>Updating and Maintaining the Library</li>
 						<li>Adventures in Live Coding</li>
@@ -94,8 +107,8 @@
 
 					<section>
 						<h2>Dependencies</h2>
-						<p>dependencies vs. devDependencies vs. peerDependencies</p>
-						<ul>
+						<p class="fragment">dependencies vs. devDependencies vs. peerDependencies</p>
+						<ul class="fragment">
 							<li><b>dependencies</b> - is for modules that will also be installed for anyone using your library such as @types/ modules that you don’t expect users would already have</li>
 							<li><b>peerDependencies</b> - is for modules that you expect users will already have (i.e. Angular) but you want warn them if they are missing </li>
 							<li><b>devDependencies</b> - is for modules that are just for you to use when developing your library</li>
@@ -103,7 +116,7 @@
 					</section>
 				</section>
 
-				<!-- ***************************** Build Process **************************** -->
+				<!-- ***************************** The Build Process **************************** -->
 				<section data-background="#3c54ca" data-background-transition="zoom">
 					<section>
 						<h2>The Build Process</h2>
@@ -111,8 +124,12 @@
 
 					<section>
 						<h2>Compiling TypeScript Q&A</h2>
-						<p class="fragment">Q: Is it ok to use <b>tsc</b> to compile my source code with?</p>
+						<p class="fragment">Q: Is it ok to use <b>tsc</b> to compile your library source code?</p>
 						<p class="fragment">A: <span style="color: red">No!</span> Use <b>ngc</b> from @angular/compiler-cli instead.</p>
+					</section>
+
+					<section>
+						<p><b>ngc</b> is a utility that comes with <i>@angular/compiler-cli</i>. It creates metadata files that help Angular work with your compiled code for the purpose for Ahead of Time (AOT) compilation.</p>
 					</section>
 
 					<section>
@@ -155,7 +172,7 @@ export default {
 
 					<section>
 						<h2>The whole build process</h2>
-						<pre><code class="hljs" data-trim contenteditable>
+						<pre style="width: 1300px; margin-left: -160px; font-size: large"><code class="hljs">
   "scripts": {
     "cleanup": "rimraf bundles",
     "bundling": "rollup -c",
@@ -174,12 +191,29 @@ export default {
 					</section>
 
 					<section data-background="https://media.giphy.com/media/n8wc3YQsqhgli/giphy.gif">
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
 						<h2>This part can be nerve racking</h2>
 					</section>
 
 					<section>
-						<h2>It doesn't have to be though</h2>
-						<p class="fregment">This is when the community gets to start helping you make your library better</p>
+						<h2>It shouldn't be though</h2>
+						<p class="fragment">The thing to keep in mind is that this is when the community gets to start helping you make your library better</p>
+					</section>
+
+					<section>
+						<h2>The commands</h2>
+						<p>It is as simple as:</p>
+						<pre class="fragment"><code class="hljs">npm adduser</code> (if you hadn't done this already)</pre>
+						<pre class="fragment"><code class="hljs">npm publish</code></pre>
 					</section>
 				</section>
 
@@ -194,7 +228,7 @@ export default {
 					</section>
 
 					<section>
-						<h2>Unit Tests</h2>
+						<h2>Setting the version</h2>
 					</section>
 
 					<section>
@@ -203,6 +237,10 @@ export default {
 
 					<section>
 						<h2>Contributing Guide</h2>
+					</section>
+
+					<section>
+						<h2>Unit Tests</h2>
 					</section>
 				</section>
 
